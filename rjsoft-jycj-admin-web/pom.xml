@@ -17,6 +17,13 @@
 
         <!--jycj-->
         <dependency>
+            <groupId>com.rjsoft</groupId>
+            <artifactId>rjsoft-uums-service-provider</artifactId>
+            <version>${rjsoft-uums-service-provider.version}</version>
+        </dependency>
+
+        <!--web-->
+        <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
         </dependency>

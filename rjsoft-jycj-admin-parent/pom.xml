@@ -19,6 +19,8 @@
     <properties>
         <rjsoft.version>1.0-SNAPSHOT</rjsoft.version>
         <jycj-uums-common.version>1.0-SNAPSHOT</jycj-uums-common.version>
+
+        <rjsoft-uums-service-provider.version>1.0-SNAPSHOT</rjsoft-uums-service-provider.version>
         <!-- project properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
