@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>rjsoft-jycj-admin-dev</artifactId>
+        <groupId>com.rjsoft</groupId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>rjsoft-jycj-admin-parent</artifactId>
+    <packaging>pom</packaging>
+    <modules>
+        <module>../rjsoft-jycj-admin-web</module>
+        <module>../rjsoft-jycj-admin-main</module>
+    </modules>
+
+    <properties>
+        <rjsoft.version>1.0-SNAPSHOT</rjsoft.version>
+        <jycj-uums-common.version>1.0-SNAPSHOT</jycj-uums-common.version>
+        <!-- project properties -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>1.8</java.version>
+        <!-- module properties -->
+
+        <!-- hibernate properties -->
+        <spring-cloud.version>Greenwich.RELEASE</spring-cloud.version>
+        <spring-boot.version>2.1.1.RELEASE</spring-boot.version>
+        <spring-tuple.version>1.0.0.RELEASE</spring-tuple.version>
+        <swagger2.version>2.5.0</swagger2.version>
+
+        <commons-lang3.version>3.8.1</commons-lang3.version>
+        <fastjson.version>1.2.41</fastjson.version>
+
+    </properties>
+
+    <dependencyManagement>
+
+        <dependencies>
+
+            <dependency>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
+                <version>${spring-cloud.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>fastjson</artifactId>
+                <version>${fastjson.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger-ui</artifactId>
+                <version>${swagger2.version}</version>
+                <scope>compile</scope>
+            </dependency>
+            <dependency>
+                <groupId>io.springfox</groupId>
+                <artifactId>springfox-swagger2</artifactId>
+                <version>${swagger2.version}</version>
+                <scope>compile</scope>
+            </dependency>
+
+
+            <dependency>
+                <groupId>org.apache.commons</groupId>
+                <artifactId>commons-lang3</artifactId>
+                <version>${commons-lang3.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>1.1.0</version>
+            </dependency>
+
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-tuple</artifactId>
+                <version>${spring-tuple.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+
+                <plugin>
+                    <groupId>org.springframework.boot</groupId>
+                    <artifactId>spring-boot-maven-plugin</artifactId>
+                    <version>${spring-boot.version}</version>
+                    <configuration>
+                        <mainClass>com.rjsoft.RjsofeJycjAdminApplication</mainClass>
+                    </configuration>
+                </plugin>
+
+            </plugins>
+        </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>${maven-compiler-plugin.version}</version>
+                <configuration>
+                    <source>${java.version}</source>
+                    <target>${java.version}</target>
+                    <encoding>${project.build.sourceEncoding}</encoding>
+                    <compilerVersion>${java.version}</compilerVersion>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>

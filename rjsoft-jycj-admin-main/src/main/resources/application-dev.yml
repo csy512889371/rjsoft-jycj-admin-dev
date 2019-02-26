@@ -1,0 +1,26 @@
+spring:
+  application:
+    name: rjsoft-jycj-admin-main
+
+server:
+  port: 8088
+
+#eureka common
+eureka:
+  instance:
+    instance-id: ${spring.cloud.client.ip-address}:${server.port}
+    prefer-ip-address: true
+    lease-expiration-duration-in-seconds: 30
+    lease-renewal-interval-in-seconds: 10
+  client:
+    serviceUrl:
+      defaultZone: http://192.168.111.118:1111/eureka/
+
+#端点 默认值为health,info
+management:
+  endpoints:
+    web:
+      exposure:
+        include: hystrix.stream,health,info
+
+
