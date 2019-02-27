@@ -63,5 +63,5 @@
     <!--用来设置某一个包或具体某一个类的日志打印级别,additivity为false不向上级传递打印信息-->
     <logger name="org.springframework" level="INFO" additivity="false"/>
     <logger name="com.netflix" level="WARN" additivity="false"/>
-
+    <logger name="org.apache.http" level="ERROR" additivity="false"/>
 </configuration>

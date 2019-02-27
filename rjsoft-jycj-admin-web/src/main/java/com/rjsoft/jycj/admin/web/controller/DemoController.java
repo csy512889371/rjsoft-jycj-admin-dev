@@ -1,8 +1,8 @@
 package com.rjsoft.jycj.admin.web.controller;
 
+import com.rjsoft.jycj.service.consumer.BlogTopicService;
 import com.rjsoft.magina.spi.common.dto.BaseResponse;
 import com.rjsoft.uums.service.provider.dto.BlogTopicDto;
-import com.rjsoft.uums.service.provider.spi.BlogTopicSpi;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,18 +19,18 @@ import java.util.List;
 public class DemoController {
 
     @Autowired
-    private BlogTopicSpi blogTopicSpi;
+    private BlogTopicService blogTopicService;
 
     @GetMapping(value = "/echoSuccess")
     @ApiOperation("test echoSuccess")
     public BaseResponse<List<BlogTopicDto>> echoSuccess() {
-        BaseResponse<List<BlogTopicDto>> blogTopicListResp = blogTopicSpi.getBlogTopicList();
+        BaseResponse<List<BlogTopicDto>> blogTopicListResp = blogTopicService.getBlogTopicList();
         return blogTopicListResp;
     }
 
     @GetMapping(value = "/findPageBlogTopic")
     @ApiOperation("分页查询")
     public BaseResponse findPageBlogTopic(Pageable pageable) {
-        return BaseResponse.ofSuccess(blogTopicSpi.findPageBlogTopic(pageable.getPageNumber(), pageable.getPageSize()));
+        return BaseResponse.ofSuccess(blogTopicService.findPageBlogTopic(pageable.getPageNumber(), pageable.getPageSize()));
     }
 }

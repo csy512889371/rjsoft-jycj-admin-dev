@@ -19,7 +19,7 @@
         <dependency>
             <groupId>com.rjsoft</groupId>
             <artifactId>rjsoft-jycj-admin-web</artifactId>
-            <version>${rjsoft.version}</version>
+            <version>${rjsoft-jycj.version}</version>
         </dependency>
 
         <dependency>

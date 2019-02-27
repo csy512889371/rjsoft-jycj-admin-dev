@@ -14,10 +14,11 @@
     <modules>
         <module>../rjsoft-jycj-admin-web</module>
         <module>../rjsoft-jycj-admin-main</module>
+        <module>../rjsoft-jycj-admin-service</module>
     </modules>
 
     <properties>
-        <rjsoft.version>1.0-SNAPSHOT</rjsoft.version>
+        <rjsoft-jycj.version>1.0-SNAPSHOT</rjsoft-jycj.version>
         <jycj-uums-common.version>1.0-SNAPSHOT</jycj-uums-common.version>
 
         <rjsoft-uums-service-provider.version>1.0-SNAPSHOT</rjsoft-uums-service-provider.version>
