@@ -18,45 +18,34 @@ public class FeignConfig {
     private Environment env;
 
     @Bean
-    public Logger.Level feignLoggerLevel(){
+    public Logger.Level feignLoggerLevel() {
         return Logger.Level.FULL;
     }
 
     /*
-        覆盖ribbon的超时机制
+      覆盖ribbon的超时机制
+      ConnectTimeout：Http建立连接的超时时间。
+      ReadTimeout：Http请求读取响应的超时时间
     */
     @Bean
     public Request.Options feignOptions() {
-        return new Request.Options(env.getProperty("feign.connectTimeoutMillis",Integer.class, 10*1000),
-                env.getProperty("feign.readTimeoutMillis",Integer.class, 60*1000));
+        return new Request.Options(env.getProperty("feign.connectTimeoutMillis", Integer.class, 10 * 1000),
+                env.getProperty("feign.readTimeoutMillis", Integer.class, 60 * 1000));
     }
 
     /*
+        计算重试的时间间隔。区间呈指数增长每次尝试时，以nextenterval*的速率=1.5（其中1.5是退避系数），将最大间隔。从现在到下一次尝试的返回时间（纳秒）。
         period是请求重试的间隔算法参数
         maxPeriod是请求间隔的最大时间
         maxAttempts是重试的最大次数
      */
     @Bean
     public Retryer feignRetryer() {
-        return new Retryer.Default(env.getProperty("feign.period",Long.class, 100L),
-                env.getProperty("feign.maxPeriod",Long.class, TimeUnit.SECONDS.toMillis(1L)),
-                env.getProperty("feign.maxAttempts",Integer.class, 3));
+        //return new Retryer.Default();
+        //return Retryer.NEVER_RETRY;
+        return new Retryer.Default(env.getProperty("feign.period", Long.class, 100L),
+                env.getProperty("feign.maxPeriod", Long.class, TimeUnit.SECONDS.toMillis(1L)),
+                env.getProperty("feign.maxAttempts", Integer.class, 3));
     }
-
-    /*@Bean
-    public RequestInterceptor feignBasicAuthRequestInterceptor() {
-        return new FeignBasicAuthRequestInterceptor();
-    }*/
-
-/*    @Bean
-    public FilterRegistrationBean filterRegistrationBean() {
-        FilterRegistrationBean filterRegistrationBean = new FilterRegistrationBean();
-        HttpHeaderParamFilter filter = new HttpHeaderParamFilter();
-        filterRegistrationBean.setFilter(filter);
-        List<String> patterns = new ArrayList<>();
-        patterns.add("*//*");
-        filterRegistrationBean.setUrlPatterns(patterns);
-        return filterRegistrationBean;
-    }*/
 
 }
