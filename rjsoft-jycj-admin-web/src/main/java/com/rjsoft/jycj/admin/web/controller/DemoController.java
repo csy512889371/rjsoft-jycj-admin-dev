@@ -8,6 +8,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -25,5 +26,11 @@ public class DemoController {
     public BaseResponse<List<BlogTopicDto>> echoSuccess() {
         BaseResponse<List<BlogTopicDto>> blogTopicListResp = blogTopicSpi.getBlogTopicList();
         return blogTopicListResp;
+    }
+
+    @GetMapping(value = "/findPageBlogTopic")
+    @ApiOperation("分页查询")
+    public BaseResponse findPageBlogTopic(@RequestParam(name = "page") Integer page, @RequestParam(name = "size") Integer size) {
+        return BaseResponse.ofSuccess(blogTopicSpi.findPageBlogTopic(page, size));
     }
 }

@@ -19,7 +19,6 @@
         <dependency>
             <groupId>com.rjsoft</groupId>
             <artifactId>rjsoft-uums-service-provider</artifactId>
-            <version>${rjsoft-uums-service-provider.version}</version>
         </dependency>
 
         <!--web-->
@@ -31,6 +30,12 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-freemarker</artifactId>
+        </dependency>
+
+        <!--jpa-->
+        <dependency>
+            <groupId>org.springframework.data</groupId>
+            <artifactId>spring-data-commons</artifactId>
         </dependency>
 
         <!--swagger-->

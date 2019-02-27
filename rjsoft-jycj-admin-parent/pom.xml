@@ -44,6 +44,13 @@
 
         <dependencies>
 
+            <!--jycj-->
+            <dependency>
+                <groupId>com.rjsoft</groupId>
+                <artifactId>rjsoft-uums-service-provider</artifactId>
+                <version>${rjsoft-uums-service-provider.version}</version>
+            </dependency>
+
             <dependency>
                 <groupId>org.springframework.cloud</groupId>
                 <artifactId>spring-cloud-dependencies</artifactId>
