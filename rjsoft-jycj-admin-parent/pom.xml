@@ -21,8 +21,9 @@
         <jycj-uums-common.version>1.0-SNAPSHOT</jycj-uums-common.version>
 
         <rjsoft-uums-service-provider.version>1.0-SNAPSHOT</rjsoft-uums-service-provider.version>
-        <migina-spi-common.version>1.0-SNAPSHOT</migina-spi-common.version>
-
+        <magina-spi-common.version>1.0-SNAPSHOT</magina-spi-common.version>
+        <magina-component-query-jpa.version>1.0-SNAPSHOT</magina-component-query-jpa.version>
+        <magina-web-common.version>1.0-SNAPSHOT</magina-web-common.version>
         <!-- project properties -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
@@ -37,7 +38,7 @@
 
         <commons-lang3.version>3.8.1</commons-lang3.version>
         <fastjson.version>1.2.41</fastjson.version>
-
+        <modelmapper.version>1.1.0</modelmapper.version>
     </properties>
 
     <dependencyManagement>
@@ -49,6 +50,24 @@
                 <groupId>com.rjsoft</groupId>
                 <artifactId>rjsoft-uums-service-provider</artifactId>
                 <version>${rjsoft-uums-service-provider.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.rjsoft</groupId>
+                <artifactId>magina-component-query-jpa</artifactId>
+                <version>${magina-component-query-jpa.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.rjsoft</groupId>
+                <artifactId>magina-spi-common</artifactId>
+                <version>${magina-spi-common.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.rjsoft</groupId>
+                <artifactId>magina-web-common</artifactId>
+                <version>${magina-web-common.version}</version>
             </dependency>
 
             <dependency>
@@ -85,11 +104,6 @@
                 <version>${commons-lang3.version}</version>
             </dependency>
 
-            <dependency>
-                <groupId>org.modelmapper</groupId>
-                <artifactId>modelmapper</artifactId>
-                <version>1.1.0</version>
-            </dependency>
 
             <dependency>
                 <groupId>org.springframework</groupId>
@@ -97,6 +111,11 @@
                 <version>${spring-tuple.version}</version>
             </dependency>
 
+            <dependency>
+                <groupId>org.modelmapper</groupId>
+                <artifactId>modelmapper</artifactId>
+                <version>${modelmapper.version}</version>
+            </dependency>
         </dependencies>
     </dependencyManagement>
 

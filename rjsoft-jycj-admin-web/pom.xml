@@ -21,6 +21,16 @@
             <artifactId>rjsoft-uums-service-provider</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>com.rjsoft</groupId>
+            <artifactId>magina-web-common</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.rjsoft</groupId>
+            <artifactId>magina-spi-common</artifactId>
+        </dependency>
+
         <!--web-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -64,6 +74,15 @@
             <artifactId>lombok</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>org.modelmapper</groupId>
+            <artifactId>modelmapper</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-tuple</artifactId>
+        </dependency>
     </dependencies>
 
 </project>
