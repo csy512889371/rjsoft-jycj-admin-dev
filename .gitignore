@@ -1,4 +1,5 @@
 .idea
 *.iml
 */target/
-*/log.path_IS_UNDEFINED/
+log.path_IS_UNDEFINED/*
+
