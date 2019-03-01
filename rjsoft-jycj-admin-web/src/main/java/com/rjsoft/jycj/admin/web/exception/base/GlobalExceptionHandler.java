@@ -10,6 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.env.Environment;
 import org.springframework.http.HttpStatus;
+import org.springframework.ui.Model;
 import org.springframework.validation.FieldError;
 import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
@@ -30,7 +31,6 @@ import java.util.Set;
  * 全局异常处理
  */
 @ControllerAdvice
-@ResponseBody
 @Slf4j
 public class GlobalExceptionHandler {
 
@@ -41,6 +41,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseStatus(value = HttpStatus.METHOD_NOT_ALLOWED)
+    @ResponseBody
     public Object handleRequestMethodException(HttpServletRequest request,
                                                HttpRequestMethodNotSupportedException exception) {
         log.error(exception.getMessage(), exception);
@@ -54,6 +55,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
     public Object methodArgumentNotValidHandler(MethodArgumentNotValidException exception) throws JsonProcessingException {
         List<ArgumentInvalidResult> argumentInvalidResults = new ArrayList<ArgumentInvalidResult>();
         for (FieldError error : exception.getBindingResult().getFieldErrors()) {
@@ -77,18 +79,16 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BusinessException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public Object businessExceptionHandler(BusinessException exception) {
+    public String businessExceptionHandler(HttpServletRequest request, BusinessException exception) {
         log.error(exception.getMessage(), exception);
 
-        BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setCode(exception.getCode());
-        baseResponse.setMessage(exception.getMessage());
-        baseResponse.setData(exception.toString());
-        return baseResponse;
+        request.setAttribute("error", exception.getDefaultMessage());
+        return "comm/error_500";
     }
 
     @ExceptionHandler(SQLException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
     public Object handleSQLException(HttpServletRequest request,
                                      SQLException exception) {
         log.error(exception.getMessage(), exception);
@@ -102,6 +102,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(ConstraintViolationException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
     public Object handleConstraintViolationException(HttpServletRequest request,
                                                      ConstraintViolationException exception) {
 
@@ -121,6 +122,7 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(RuntimeException.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
+    @ResponseBody
     public Object handleAllException(HttpServletRequest request,
                                      RuntimeException exception) {
         log.error(exception.getMessage(), exception);
@@ -134,16 +136,12 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(Exception.class)
     @ResponseStatus(value = HttpStatus.INTERNAL_SERVER_ERROR)
-    public Object handleAllException(HttpServletRequest request,
-                                     Exception exception) {
+    public String handleAllException(Exception exception, Model model) {
 
         log.error(exception.getMessage(), exception);
 
-        BaseResponse baseResponse = new BaseResponse();
-        baseResponse.setCode(HttpStatus.INTERNAL_SERVER_ERROR.getReasonPhrase());
-        baseResponse.setMessage(exception.getMessage());
-        baseResponse.setData("Error");
-        return baseResponse;
+        model.addAttribute("error", exception.getMessage());
+        return "comm/error_500";
     }
 
 

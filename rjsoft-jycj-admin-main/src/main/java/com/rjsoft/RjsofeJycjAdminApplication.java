@@ -3,6 +3,7 @@ package com.rjsoft;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.boot.Banner;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.boot.autoconfigure.freemarker.FreeMarkerAutoConfiguration;
 import org.springframework.boot.builder.SpringApplicationBuilder;
 import org.springframework.cloud.client.circuitbreaker.EnableCircuitBreaker;
 import org.springframework.cloud.netflix.eureka.EnableEurekaClient;
@@ -16,7 +17,9 @@ import org.springframework.context.annotation.ComponentScan;
         "com.rjsoft"
 })
 @EnableFeignClients(basePackages = "com.rjsoft")
-@SpringBootApplication
+@SpringBootApplication(exclude = {
+        FreeMarkerAutoConfiguration.class
+})
 @Slf4j
 public class RjsofeJycjAdminApplication {
 

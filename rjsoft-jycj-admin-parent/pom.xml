@@ -55,12 +55,6 @@
 
             <dependency>
                 <groupId>com.rjsoft</groupId>
-                <artifactId>magina-component-query-jpa</artifactId>
-                <version>${magina-component-query-jpa.version}</version>
-            </dependency>
-
-            <dependency>
-                <groupId>com.rjsoft</groupId>
                 <artifactId>magina-spi-common</artifactId>
                 <version>${magina-spi-common.version}</version>
             </dependency>
