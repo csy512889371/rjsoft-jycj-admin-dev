@@ -15,6 +15,9 @@ spring:
   devtools:
       restart:
         enabled: true
+  main:
+    #多个接口上的@FeignClient(“相同服务名”)会报错，overriding is disabled
+    allow-bean-definition-overriding: true
 
 server:
   port: 8088
